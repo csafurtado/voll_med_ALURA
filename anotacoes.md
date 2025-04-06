@@ -16,10 +16,15 @@
 
 - Ao adicionar a dependência do Spring Data, ele irá tentar procurar um arquivo com dados para se conectar a um banco de dados. Caso não o encontre, ele não deixa nem iniciar o projeto.
 
-- Uma classe JPA (Java Persistence API) representa um objeto da Tabela do Banco de dados dentro do código.
+- Uma classe **JPA** (Java Persistence API) representa um objeto da Tabela do Banco de dados dentro do código. Basicamente, ela é a classe que representa o objeto tanto no mundo real quanto no banco e na aplicação.
 
 - A interface `JPArepository` (ou simplesmente _repository_) serve para executar as opereções de salvamento/recuperação de dados de uma entidade/objeto de uma tabela do Banco de dados. Para isso, se cria uma interface qualquer que HERDA de `JPARepository` e o tipo com Generics( usar o <\ClasseTal, tipoId>).
 
-- Uma migração ou _migration_ é uma alteração que é feita no banco de dados pela aplicação. A cada nova modificação, salva-se um arquivo SQL que mostra quais foram as "novidades" implementadas no banco de dados pela aplicação. A biblioteca **FLYWAY** possui 2 dependências: um core e outra com o Banco de Dados específico (mysql, Postgres etc). As migrações por padrão ficam em _main->resources->db->migration_. **SEMPRE PARE O PROJETO AO MEXER COM MIGRAÇÔES!!!**. O padrão de nomenclatura é `VX__oqueamigrationfaz.sql`, sendo 'X' o número da versão da migração (se foi a primeira é 1 e por aí vai).
+- Uma migração ou _migration_ é uma alteração que é feita no banco de dados pela aplicação. A cada nova modificação, salva-se um arquivo SQL que mostra quais foram as "novidades" implementadas no banco de dados pela aplicação. A biblioteca **FLYWAY** possui 2 dependências: um core e outra com o Banco de Dados específico (mysql, Postgres etc). As migrações por padrão ficam em _main->resources->db->migration_. **SEMPRE PARE O PROJETO AO MEXER COM MIGRAÇÔES!!!**. O padrão de nomenclatura é `VX__oqueamigrationfaz.sql`, sendo 'X' o número da versão da migração (se foi a primeira é 1 e por aí vai). Uma vez feita, o arquivo da migration **NÃO PODE SER MAIS MODIFICADO POSTRIORMENTE**, deve-se criar um novo arquivo para isso.
+
+- O <a href="https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html#builtinconstraints">_Bean validation_</a> são annotations utilizados para colocar validações em campos das classes (records) DTO.
+    - Natureza: Beans são instâncias de classes gerenciadas pelo Spring, enquanto anotações são metadados que configuram o comportamento dessas classes.
+    - Função: Beans representam a lógica de negócios e a estrutura da aplicação, enquanto anotações são usadas para definir como essas classes devem ser tratadas pelo Spring.
+    - Interdependência: Beans podem ser configurados e definidos usando anotações, mas anotações não são beans em si.
 
 - 

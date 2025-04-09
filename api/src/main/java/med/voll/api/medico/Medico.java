@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -37,6 +38,8 @@ public class Medico {
     @Embedded                           // Define que a classe Endereço está 'embutida' dentro da tabela 'medicos', não sendo necessário criar outra tabela no DB que referencie o Endereço
     private Endereco endereco;
 
+    private Boolean ativo;
+
     // Construtor que recebe o DTO de médico e já cria o objeto Medico
     public Medico(DadosCadastroMedico dados) {
         this.nome = dados.nome();
@@ -45,5 +48,26 @@ public class Medico {
         this.crm = dados.crm();
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
+        this.ativo = true;
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoMedico dados) {
+        if (dados.nome() != null)  // Atualiza o nome apenas se vier ele no corpo da requisição 
+            this.nome = dados.nome();
+
+        if (dados.telefone() != null)
+            this.nome = dados.telefone();
+
+        if (dados.endereco() != null) {
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
+    }
+
+    public void ativar() {
+        this.ativo = true;
     }
 }

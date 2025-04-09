@@ -27,4 +27,10 @@
     - Função: Beans representam a lógica de negócios e a estrutura da aplicação, enquanto anotações são usadas para definir como essas classes devem ser tratadas pelo Spring.
     - Interdependência: Beans podem ser configurados e definidos usando anotações, mas anotações não são beans em si.
 
+- O Spring Boot já possui parâmetros de URL (GET) que outras aplicações podem usar, como o 'sort'. Para usar mais parâmetros, basta utilizar o caracter '&' separando cada atributo. É possível criar novos parâmetros pelo arquivo _application.properties_. 
+
+- Parâmetros de requisição (ou de URL) também podem ser passados na requisição (como o id de um registro). Ele seria acessado como um recurso da URL (no caso então, algumsite.com/itemdesejado/<\id>). Para usá-la, podemos basicamente 
+
+- A **exclusão lógica** é uma exclusão "fake" de um registro no db, em que ele permanece cadastrado, mas não é mais mostrado nas consultas, como se estivesse inativo.
+
 - 
